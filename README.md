@@ -1,2 +1,2 @@
 # Java_Advanced
- A repo containing exercises from the Programming Fundamentals with Java course at SoftUni
+ A repo containing exercises from the Java Advanced course at SoftUni
