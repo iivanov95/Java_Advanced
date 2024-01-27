@@ -1,0 +1,43 @@
+package Lecture8_IteratorsAndComparatorsExercise.ListyIterator;
+
+import java.util.Scanner;
+
+public class MainListyOperator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String line = scanner.nextLine();
+
+        ListyIterator<String> listyIterator = new ListyIterator<>();
+
+        while (!line.equals("END")) {
+            String[] tokens = line.split("\\s+");
+            String command = tokens[0];
+            switch (command) {
+                case "Create":
+                    String[] elements = new String[tokens.length - 1];
+                    System.arraycopy(tokens, 1, elements, 0, tokens.length - 1);
+                    listyIterator = new ListyIterator<>(elements);
+                    break;
+                case "Move":
+                    System.out.println(listyIterator.move());
+                    break;
+                case "Print":
+                    try {
+                        listyIterator.print();
+                    } catch (IllegalStateException ex) {
+                        System.out.println(ex.getMessage());
+                    }
+                    break;
+                case "HasNext":
+                    System.out.println(listyIterator.hasNext());
+                    break;
+                case "PrintAll":
+                    listyIterator.forEach(e -> System.out.print(e + " "));
+                    System.out.println();
+                    break;
+            }
+            line = scanner.nextLine();
+        }
+    }
+}
